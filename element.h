@@ -6,14 +6,22 @@
 typedef struct Element Element;
 struct Element
 {
-    int nombre;
-    Element *suivant;
+    int number;
+    Element *next;
 };
 
-typedef struct Liste Liste;
-struct Liste
+typedef struct List List;
+struct List
 {
-    Element *premier;
+    Element *first;
+    int listSize;
 };
+
+
+/* Prototypes */
+List *initialization(int number);
+Element *addElement(List *list, int elementPosition, int number);
+void displayList(List *list);
+Element *getElement(List *list, int elementPosition);
 
 #endif // DEF_ELEMENT
