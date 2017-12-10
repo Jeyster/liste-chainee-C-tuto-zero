@@ -92,3 +92,51 @@ Element *getElement(List *list, int elementPosition)
 
     return currentElt;
 }
+
+
+void deleteElement(List *list, int elementPosition)
+{
+    Element *deletedElt = malloc(sizeof(*deletedElt));
+    Element *previousElt = malloc(sizeof(*previousElt));
+    if ((deletedElt == NULL) || (previousElt == NULL))
+    {
+        printf("!!! Erreur allocation memoire lors de l'ajout d'un element, arret du programme !!!\n");
+        exit(EXIT_FAILURE);
+    }
+
+    /* Suppression de l'element en premiere position */
+    if (elementPosition < 2)
+    {
+        deletedElt = list->first;
+        list->first = deletedElt->next;
+    }
+    /* Ajout de l'element en derniere position */
+    else if (elementPosition > list->listSize)
+    {
+        deletedElt = getElement(list, list->listSize);
+        previousElt = getElement(list, (list->listSize) - 1);
+        previousElt->next = deletedElt->next;
+    }
+    /* Ajout de l'element à une position intermédiaire */
+    else
+    {
+        deletedElt = getElement(list, elementPosition);
+        previousElt = getElement(list, elementPosition-1);
+        previousElt->next = deletedElt->next;
+    }
+
+    list->listSize--;
+    free(deletedElt);
+}
+
+
+void deleteList(List *list)
+{
+    while(list->first != NULL)
+    {
+        Element *toDelete = list->first;
+        list->first = list->first->next;
+        free(toDelete);
+    }
+    list->listSize = 0;
+}

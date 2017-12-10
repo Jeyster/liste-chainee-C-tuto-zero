@@ -14,7 +14,17 @@ int main()
 
     addElement(list, 1, 2);
     addElement(list, 1, 3);
-    addElement(list, 5, 4);
+    addElement(list, 1, 4);
+    //displayList(list);
+
+    deleteElement(list,2);
+    deleteElement(list,3);
+    //displayList(list);
+
+    deleteList(list);
+    displayList(list);
+
+    list = initialization(1);
     displayList(list);
 
     /* !!! DEBUG !!! */

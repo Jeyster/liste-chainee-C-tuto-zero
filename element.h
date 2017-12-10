@@ -23,5 +23,7 @@ List *initialization(int number);
 Element *addElement(List *list, int elementPosition, int number);
 void displayList(List *list);
 Element *getElement(List *list, int elementPosition);
+void deleteElement(List *list, int elementPosition);
+void deleteList(List *list);
 
 #endif // DEF_ELEMENT
